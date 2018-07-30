@@ -47,18 +47,26 @@ upload = multer({limits: {fileSize: 5000000 },dest:'/uploads/'})
     
             if(err){
                 console.log("err executed " + err);
+                res.json({
+                    success: false,
+                    message: "Failed",
+                })
+            } else {    
+                console.log("TopAttraction added");
+                res.json({
+                    success: true,
+                    message: "Attraction added",
+                    result: resp
+                })
             }
-    
-                console.log("TopAttraction added" + resp);
         });
-        console.log("img added to db");
-        res.json({
-            success: true,
-            message: "Image added to DB",
-        })
+        // console.log("img added to db");
+        // res.json({
+        //     success: true,
+        //     message: "Image added to DB",
+        // })
     }
-
-
+    
   })
 
 

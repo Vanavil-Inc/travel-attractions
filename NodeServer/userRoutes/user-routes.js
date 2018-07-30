@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const bcrypt = require('bcrypt');
 
-const User = require('./user-model');
+const User = require('./user-model'); 
 
  router.route('/registerUser').post((req, res) => {
 
