@@ -1,3 +1,3 @@
 #travel-attractions
 
-NodeServer folder for Node sources
+NodeServer folder for Node.js sources
