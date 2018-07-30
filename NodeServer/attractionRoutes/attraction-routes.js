@@ -56,7 +56,7 @@ upload = multer({limits: {fileSize: 5000000 },dest:'/uploads/'})
                 res.json({
                     success: true,
                     message: "Attraction added",
-                    result: resp
+                    // result: resp
                 })
             }
         });
