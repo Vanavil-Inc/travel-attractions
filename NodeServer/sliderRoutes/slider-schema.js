@@ -5,9 +5,8 @@ module.exports = new mongoose.Schema({
     sliderTitle : {
     	type: String
     },
-    sliderImg: { 
-        data: Buffer, 
-        contentType: String 
+    sliderImgUrl: { 
+       type: String 
     },
     shortDescription : {
     	type: String

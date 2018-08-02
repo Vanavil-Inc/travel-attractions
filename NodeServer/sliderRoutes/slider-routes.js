@@ -1,44 +1,73 @@
 const router = require('express').Router();
-// var base64Img = require('base64-img');
+
 
 const Slider = require('./slider-model');
 
 
-// var dat = null;
+router.route('/mainSlider').post((req, res) =>{
 
-// base64Img.base64('companyLogo.PNG', function(err, data) {
-// if(err){
-// console.log("err " + err);
-// }
-// console.log("data " + data)
-//  // dat = data;
+    const sliderTitle = req.body.sliderTitle;
+    const sliderImgUrl = req.body.sliderImgUrl;
+    const shortDescription = "Beach view";
 
-// base64Img.img(data, '', 'shashi', function(err, filepath) {
-// if(err){
-// console.log("errr " + err)
-// }
-// console.log("filepath " + filepath);
-// });
+    if(res == null){
+        res.json({
+            success: false,
+            message: "something wrong",
+        })
+    } else {
+
+    Slider.create({sliderTitle : sliderTitle,sliderImgUrl : sliderImgUrl,shortDescription : shortDescription}, function(err,resp){
+
+            if(err){
+                console.log("err executed " + err);
+                res.json({
+                    success: false,
+                    message: "something went wrong",
+                })
+            } else {
+                console.log("sliderImg added" + resp);
+                res.json({
+                    success: true,
+                    message: "slider added",
+                    result: resp
+                })
+
+            }
+
+         });
+    }
+});
 
 
-// });
+router.route('/getSlider').get((req,res) => {
 
-
-const sliderTitle = "penambur";
-const sliderImg = "data";
-const shortDescription = "Beach view";
-
-
-
-
-Slider.create({sliderTitle : sliderTitle,sliderImg : sliderImg,shortDescription : shortDescription}, function(err,resp){
+    Slider.find({}, function(err,respon){
 
         if(err){
-            console.log("err executed " + err);
+            console.log("user not found");
+            res.json({
+                success: false,
+                message: "Error"
+                // result: error
+            });
+        } else {
+    
+            console.log("user found");
+            res.json({
+                success: true,
+                message: "Found",
+                result: respon
+            });
+    
         }
-
-            console.log("sliderImg added" + resp);
     });
+
+});
+
+
+
+
 
 
 
