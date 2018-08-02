@@ -185,9 +185,9 @@ router.route('/loginUser').post((req, res) => {
 
 router.route('/getAllUserData').get((req,res) => {
 
- name = req.body.email;
+//  name = req.body.email;
 
-User.findOne({"email" : name}, function(err,respon){
+User.find({}, function(err,respon){
 
     if(err){
         console.log("user not found");
@@ -196,7 +196,7 @@ User.findOne({"email" : name}, function(err,respon){
             message: "Error"
             // result: error
         });
-    } else{
+    } else {
 
         console.log("user found");
         res.json({
@@ -209,7 +209,6 @@ User.findOne({"email" : name}, function(err,respon){
 });
 
 });
-
 
 
 

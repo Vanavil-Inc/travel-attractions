@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
 
-const topAttraction = mongoose.model('topAttraction', require('./attraction-schema'));
+const Attraction = mongoose.model('Attraction', require('./attraction-schema'));
 
-module.exports = topAttraction; 
+module.exports = Attraction; 
