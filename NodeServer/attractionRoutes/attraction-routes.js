@@ -5,9 +5,10 @@ const fs = require('fs');
 
 const TopAttraction = require('./attraction-model');
 
-upload = multer({limits: {fileSize: 5000000 },dest:'/uploads/'})
+// upload = multer({limits: {fileSize: 5000000 },dest:'/uploads/'})
+//upload.single('picture'),
 
-  router.route('/imageUpload').post(upload.single('picture'),(req, res) => {
+  router.route('/imageUpload').post((req, res) => {
 
     if(req.file == null){
         res.json({
