@@ -30,8 +30,6 @@ mongoose.connection.on('error', (err) => {
 //  Connect all our routes to our application
 app.use('/', routes);
 
-
-
 // Turn on that server!
 app.listen(8081, () => {
     console.log('App listening on port 8081');
