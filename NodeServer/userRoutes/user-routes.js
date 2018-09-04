@@ -3,6 +3,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 
 const User = require('./user-model'); 
+// var key = 12; 
 
  router.route('/registerUser').post((req, res) => {
 
@@ -24,7 +25,7 @@ const User = require('./user-model');
     const mailingPreference = req.body.mailingPreference;
 
     // password hashing done here;
-    bcrypt.hash(password, null, null, function(err, hash){
+    bcrypt.hash(password, 12, function(err, hash){
         if(err){
                console.log("err" + err);
                res.json({
