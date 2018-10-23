@@ -9,23 +9,25 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AttractionEditComponent implements OnInit {
 
-  attractions = {};  
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
+  attractions = {};
+  constructor(private httpClient: HttpClient, private router: Router, private route: ActivatedRoute) {
+
+  }
 
   ngOnInit() {
     this.getAttractionById(this.route.snapshot.params['id']);
   }
 
-  getAttractionById(id){
-    this.http.get('http://192.168.253.1:3000/attraction/'+id)
-    .subscribe(data =>{
-      this.attractions= data;
-      console.log("============", this.attractions);
+  getAttractionById(id) {
+    this.httpClient.get('http://192.168.0.177:3000/attraction/' + id)
+    .subscribe(data => {
+      this.attractions = data;
+      console.log('============', this.attractions);
     });
   }
 
   updateAttraction(id, data) {
-    this.http.put('http://192.168.253.1:3000/attraction/'+id, data)
+    this.httpClient.put('http://192.168.0.177:3000/attraction/' + id, data)
       .subscribe(res => {
           // let id = res['_id'];
           this.router.navigate(['/attraction-details']);

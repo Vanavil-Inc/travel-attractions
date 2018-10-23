@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AttractionService } from '../../services/attraction.service';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Http } from '@angular/http'
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-attraction-details',
@@ -15,10 +14,10 @@ export class AttractionDetailsComponent implements OnInit {
 
   attraction: any;
 
-  displayedColumns = ['#','title', 'placeName','placeAddress','description','websiteLink','contact','email','active'];
+  displayedColumns = ['#', 'title', 'placeName', 'placeAddress', 'description', 'website', 'contact', 'email', 'active'];
   dataSource = new MatTableDataSource(this.attraction);
 
- 
+
   @ViewChild(MatPaginator) paginator : MatPaginator;
 
   applyFilter(filterValue: string) {
@@ -27,26 +26,23 @@ export class AttractionDetailsComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  constructor(private _attractionService: AttractionService, 
-              private _router: Router, 
-              private _http: Http, 
-              private httpClient : HttpClient
-            ) { }
+  constructor(private _attractionService: AttractionService,
+              private _router: Router) { }
 
   ngOnInit() {
     this._attractionService.getAllAttraction()
-    .subscribe((data) =>{
+    .subscribe((data) => {
       this.attraction = data;
-      console.log("####Attraction List", this.attraction);
+      console.log('####Attraction List', this.attraction);
       this.dataSource = new MatTableDataSource(this.attraction);
     });
   }
 
-  deleteAttraction(id){
+  deleteAttraction(id) {
     this._attractionService.delete(id)
-    .subscribe((data) =>{
-      this._router.navigate(['/login']);
-    },(err) =>{
+    .subscribe((data) => {
+      this._router.navigate(['/attraction-details']);
+    }, (err) => {
       console.log(err);
     });
   }

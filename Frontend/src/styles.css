@@ -1,15 +1,27 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~css-star-rating/css/star-rating.css";
 
+.background-color{
+  background-color: rgba(108, 117, 125, 0.27);
+}
+.jumbotron{
+  box-shadow: none !important;
+}
 .login-component{
   /* background-color: #57697b; */
   background: none !important;
 }
-.login-component div{
-  text-align: -webkit-center !important
-}
 .login-component-styles{
   width: 570px;
-  background-color: #282738;
+  background-color: rgba(108, 117, 125, 0.26);;
+}
+.login-div{
+  display: inline-grid !important;
+}
+.login-div .login-btn{
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 .sing-in-title{
   height: 65px;
@@ -18,50 +30,11 @@
   font-weight: bold;
   padding-top: 5px;
   margin-bottom: 15px;
+  text-transform: uppercase;
 }
 .login-form-style{
   padding-left: 15px;
   padding-right: 15px;
-}
-.login-form-style  form div{
-  padding-bottom: 10px;
-}
-.input-group-addon {
-  padding: 6px 12px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1;
-  color: #555;
-  text-align: center;
-  background-color: #eee;
-  border: 1px solid #ccc;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-.login-icon:before {
-  content: "\f003";
-  font-size: 24px;
-  color: #666;
-  cursor: pointer;
-}
-.key-icon:before{
-  font-size: 24px;
-  color: #666;
-  cursor: pointer;
-}
-.login-icon {
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome !important;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.login-btn{
-  width: 100%;
-  text-transform: uppercase;
-  font-size: 20px;
-  font-weight: bold;
 }
 .login-footer{
   height: 53px;
@@ -164,65 +137,66 @@
 ul{
   list-style: none;
 }
-header{
-  background-color: rgba(0, 0, 0, 0.075);
-  height: 65px;
-}
 .alert-danger{
   margin-left: 150px;
+}
+
+/*----------COMMENTS---------------*/
+
+.jumbotron{
+  padding-top: 40px !important;
 }
 .review-component{
   /* background-color: #57697b; */
   background: none !important;
-}
-.review-component div{
-  text-align: -webkit-center !important
+  text-align: -webkit-center;
 }
 .review-component-styles{
-  width: 580px;
-  background-color: #282738;
+  width: 80%;
+  background-color: #e9ecef;;
 }
 .review-title{
   height: 65px;
-  background: #007bff;
+  background: rgba(0,0,0,.38);;
   color: #fff;
   font-weight: bold;
   padding-top: 5px;
   margin-bottom: 15px;
 }
-.review-title img{
-  width: 168px;
-  float: left;
-  margin-left: 20px;
-}
 .review-title h1{
-  text-align: left;
-  font-size: 30px;
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
   padding-top: 9px;
-  position: relative;
-  left: 15px;
+  text-transform: uppercase;
 }
 .review-form-style{
   padding-left: 15px;
   padding-right: 15px;
 }
-.review-form-style label{
-  color: #fff;
+.overall-rating-style{
+  padding-left: 15px;
 }
-.review-form-style input, .review-form-style textarea {
+.rating{
+  float: left;
+}
+.star[_ngcontent-c4] {
+  width: 30px !important;
+  height: 30px !important;
+}
+.model-btn-style{
+  padding-bottom: 20px;
   width: 100%;
-  border-radius: 4px !important;
-  padding-left: 10px;
-  padding-right: 10px;
+  text-align: right;
 }
+
+/*================END COMMENTS STYLES=============*/
+
 .post-btn{
   width: 130px;
   border-radius: 6px !important;
   font-weight: bold !important;
   background-color: #a1b1c1 !important;
-}
-.model-btn-style{
-  padding-bottom: 20px;
 }
 .rating-review-width{
   width: 100%;
@@ -284,3 +258,73 @@ agm-map {
 .error-message {
   font-size: 12px;
 }
+.mat-header-cell {
+  color: rgba(0, 0, 0, 0.71) !important;
+}
+.mat-header-cell {
+  font-size: 14px !important;
+  font-weight: bold !important;
+}
+td.mat-cell {
+  height: 94px;
+}
+td.mat-cell:first-child, td.mat-footer-cell:first-child{
+  width: 50px;
+}
+td.mat-cell:nth-child(2), td.mat-cell:nth-child(3){
+  width: 150px;
+}
+td.mat-cell:nth-child(4){
+  width: 200px;
+}
+td.mat-cell:nth-child(5){
+  width: 400px;
+}
+td.mat-cell:nth-child(6){
+  width: 150px;
+}
+td.mat-cell:nth-child(7){
+  width: 90px;
+}
+td.mat-cell:nth-child(8){
+  width: 100px;
+}
+td.mat-cell:nth-child(9){
+  width: 80px;
+}
+.edit-btn,  .delete-btn{
+  width: 75px;
+  height: 35px;
+}
+.edit-btn{
+  margin-bottom: 5px;
+}
+.edit-btn i,  .delete-btn i{
+ font-size: 22px;
+ padding-top: 2px;
+}
+
+.add-files-btn {
+  float: right;
+}
+:host {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.actions {
+  justify-content: flex-end;
+}
+
+/*Header Override styles*/
+
+.mat-form-field-infix{
+  width: 250px !important;
+}
+.search-btn .mat-form-field-appearance-legacy .mat-form-field-label{
+  font-size: 12px;
+  margin-top: 14px;
+}
+
+/*End...*/

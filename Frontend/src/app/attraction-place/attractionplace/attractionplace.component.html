@@ -1,65 +1,103 @@
-<div class="background-image">
-    <div class="container"> 
-        <div class="jumbotron register-component">
-            <div class="col-lg-12">
-                <div class="register-component-styles">
-                    <div class="text-center">
-                        <h1 class="register-title">New Attractions</h1>
+<div class="example-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="section-title">User Register</h2>
+                <form [formGroup]="attractionFormDetails">
+                    <mat-form-field class="full-width col-12">
+                        <input type="text" matInput placeholder="Title" formControlName="title" required>
+                        <mat-error *ngFor="let validation of validation_messages.title">
+                            <mat-error class="error-message" *ngIf="attractionFormDetails.get('title').hasError(validation.type) && (attractionFormDetails.get('title').dirty || attractionFormDetails.get('title').touched)">
+                                {{validation.message}}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width col-12">
+                        <input type="text" matInput placeholder="Place Name" formControlName="placeName" required>
+                        <mat-error *ngFor="let validation of validation_messages.placeName">
+                            <mat-error class="error-message" *ngIf="attractionFormDetails.get('placeName').hasError(validation.type) && (attractionFormDetails.get('placeName').dirty || attractionFormDetails.get('placeName').touched)">
+                                {{validation.message}}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field> 
+                    <mat-form-field class="full-width col-12">
+                        <input type="text" matInput placeholder="Place Addresss" formControlName="placeAddress" required>
+                        <mat-error *ngFor="let validation of validation_messages.placeAddress">
+                            <mat-error class="error-message" *ngIf="attractionFormDetails.get('placeAddress').hasError(validation.type) && (attractionFormDetails.get('placeAddress').dirty || attractionFormDetails.get('placeAddress').touched)">
+                                {{validation.message}}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width col-12">
+                        <textarea matInput placeholder="Short Description" formControlName="shortDescription" required></textarea>
+                        <mat-error *ngFor="let validation of validation_messages.shortDescription">
+                            <mat-error class="error-message" *ngIf="attractionFormDetails.get('shortDescription').hasError(validation.type) && (attractionFormDetails.get('shortDescription').dirty || attractionFormDetails.get('shortDescription').touched)">
+                                {{validation.message}}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>  
+                    <mat-form-field class="full-width col-12">
+                        <textarea matInput placeholder="Long Description" formControlName="longDescription" required></textarea>
+                        <mat-error *ngFor="let validation of validation_messages.longDescription">
+                            <mat-error class="error-message" *ngIf="attractionFormDetails.get('longDescription').hasError(validation.type) && (attractionFormDetails.get('longDescription').dirty || attractionFormDetails.get('longDescription').touched)">
+                                {{validation.message}}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>  
+                    <mat-form-field class="full-width col-6">
+                        <input type="text" matInput placeholder="Latitude" formControlName="latitude" required>
+                        <mat-error *ngFor="let validation of validation_messages.latitude">
+                            <mat-error class="error-message" *ngIf="attractionFormDetails.get('latitude').hasError(validation.type) && (attractionFormDetails.get('latitude').dirty || attractionFormDetails.get('latitude').touched)">
+                                {{validation.message}}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>  
+                    <mat-form-field class="full-width col-6">
+                        <input type="text" matInput placeholder="Longitude" formControlName="longitude" required>
+                        <mat-error *ngFor="let validation of validation_messages.longitude">
+                            <mat-error class="error-message" *ngIf="attractionFormDetails.get('longitude').hasError(validation.type) && (attractionFormDetails.get('longitude').dirty || attractionFormDetails.get('longitude').touched)">
+                                {{validation.message}}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field> 
+                    <mat-form-field class="full-width col-12">
+                        <input type="url" matInput placeholder="Web site" formControlName="website" required>
+                        <mat-icon matSuffix>language</mat-icon>
+                        <mat-error *ngFor="let validation of validation_messages.website">
+                            <mat-error class="error-message" *ngIf="attractionFormDetails.get('website').hasError(validation.type) && (attractionFormDetails.get('website').dirty || attractionFormDetails.get('website').touched)">
+                                    {{validation.message}}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>  
+                    <mat-form-field class="full-width col-4">
+                        <input type="tel" matInput placeholder="Contact" formControlName="contact" required>
+                        <mat-icon matSuffix>phone</mat-icon>
+                        <mat-hint>Include area code</mat-hint>
+                        <mat-error *ngFor="let validation of validation_messages.contact">
+                            <mat-error class="error-message" *ngIf="attractionFormDetails.get('contact').hasError(validation.type) && (attractionFormDetails.get('contact').dirty || attractionFormDetails.get('contact').touched)">
+                                {{validation.message}}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field> 
+                    <mat-form-field class="full-width col-8">
+                        <input type="email" matInput placeholder="Email" formControlName="email" required>
+                        <mat-icon matSuffix>email</mat-icon>
+                        <mat-error *ngFor="let validation of validation_messages.email">
+                            <mat-error class="error-message" *ngIf="attractionFormDetails.get('email').hasError(validation.type) && (attractionFormDetails.get('email').dirty || attractionFormDetails.get('email').touched)">
+                                {{validation.message}}
+                            </mat-error>
+                        </mat-error>
+                    </mat-form-field>   
+                    <div class="attraction-btn-style">
+                        <button type="button" class="btn btn-default cancel-btn" routerLink="/attraction-details">CANCEL
+                        </button>
+                        <button class="submit-btn rounded" 
+                            color="primary" mat-raised-button type="submit" 
+                            (click)="attractionPlace()">INSERT
+                        </button>
                     </div>
-                    <div class="text-center register-form-style">
-                        <form [formGroup]="attractionPlaceForm" class="form-group input-group">
-                          <div class="form-group input-group">
-                              <label for="attractionId" class="control-label">Attraction Id</label>
-                              <input formControlName="attractionid" type="text" name="attractionid" class="form-control border-rdius" placeholder="" required>
-                          </div>
-                          <div class="form-group input-group">
-                              <label for="title">Title</label>
-                              <input formControlName="title" type="text" name="title" class="form-control border-rdius" placeholder="" required>
-                          </div>
-                          <div class="form-group input-group">
-                              <label for="img">Image</label>
-                              <input formControlName="img" type="file" name="img" class="form-control" required #img ngModel accept="image/*" (change)="handleFileInput($event.target.files)">
-                          </div>
-                          <div class="form-group input-group">
-                              <label for="placeName">Place Name</label>
-                              <input formControlName="placeName" type="text" name="placeName" class="form-control border-rdius" placeholder="" required>
-                          </div>
-                          <div class="form-group input-group">
-                            <label for="placeAddress">Place Address</label>
-                            <input formControlName="placeAddress" type="text" name="placeAddress" class="form-control border-rdius" placeholder="" required>
-                          </div>
-                          <div class="form-group input-group">
-                              <label for="description">Description</label>
-                              <textarea formControlName="description" type="text" name="description" class="form-control border-rdius" placeholder="" required></textarea>
-                          </div>
-                            <div class="form-group input-group">
-                                <label for="latitude">Latitude</label>
-                                <input formControlName="latitude" type="text" name="latitude" class="form-control border-rdius" placeholder="" required>
-                            </div>  
-                            <div class="form-group input-group">
-                                <label for="longitude">Longitude</label>
-                                <input formControlName="longitude" type="text" name="longitude" class="form-control border-rdius" placeholder="" required>
-                            </div>
-                            <div class="form-group input-group">
-                                <label for="websiteLink">Web site</label>
-                                <input formControlName="websiteLink" type="websiteLink" name="contact" class="form-control border-rdius" placeholder="" required>
-                            </div>
-                            <div class="form-group input-group">
-                                <label for="contact">Contact</label>
-                                <input formControlName="contact" type="text" name="contact" class="form-control border-rdius" placeholder="" required>
-                            </div>
-                            <div class="form-group input-group">
-                                <label for="email">Email</label>
-                                <input formControlName="email" type="text" name="email" class="form-control border-rdius" placeholder="" required>
-                            </div>         
-                            <div class="form-group input-group btn-styles">
-                              <button type="button" class="btn btn-default cancel-btn" routerLink="/">CANCEL</button>
-                              <button type="submit" class="btn btn-success register-btn" (click)="attractionPlace()">Insert </button>
-                            </div>
-                        </form>                                  
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-  </div>
+</div>

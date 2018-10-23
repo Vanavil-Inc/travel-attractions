@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { Form, FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { UserService } from '../../services/user.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import {AttractionService} from '../../services/attraction.service';
 
 
+
+// @ts-ignore
 @Component({
   selector: 'app-attractionplace',
   templateUrl: './attractionplace.component.html',
@@ -12,48 +13,65 @@ import { UserService } from '../../services/user.service';
 })
 export class AttractionplaceComponent implements OnInit {
 
+  attractionFormDetails: FormGroup;
+
+  validation_messages = {
+    'title': [
+      { type: 'required', message: 'Title name is required' }
+    ],
+    'placeName': [
+      { type: 'required', message: 'Place Name is required' }
+    ],
+    'placeAddress': [
+      { type: 'required', message: 'Address is required' }
+    ],
+    'shortDescription': [
+      { type: 'required', message: 'Short Description is required' }
+    ],
+    'longDescription': [
+      { type: 'required', message: 'Long Description is required' }
+    ],
+    'latitude': [
+      { type: 'required', message: 'Latitude is required' }
+    ],
+    'longitude': [
+      { type: 'required', message: 'Longitude is required' }
+    ],
+  };
+
   attraction: any;
 
-  attractionPlaceForm : FormGroup = new FormGroup({
-    attractionid: new FormControl(null, Validators.required),
-    title: new FormControl(null, Validators.required),
-    img: new FormControl(null, Validators.required),
-    placeName: new FormControl(null, Validators.required),
-    placeAddress: new FormControl(null, Validators.required),
-    description: new FormControl(null, Validators.required), 
-    latitude: new FormControl(null, Validators.required),
-    longitude: new FormControl(null, Validators.required),
-    websiteLink: new FormControl(null, Validators.required),
-    contact: new FormControl(null, Validators.required),
-    email: new FormControl(null, Validators.required),
-  });
-
-  constructor(private router:Router,
-    private _userService: UserService,private _http: HttpClient) {
+  constructor(private router: Router,
+    private attractionService: AttractionService, private fb: FormBuilder) {
    }
   ngOnInit() {
+    this.attractionValidation();
   }
 
-  handleFileInput(){
-
-    
-  }
-   attractionPlace(){
-      if(!this.attractionPlaceForm.valid){
-        console.log('Invalid form');
-        return;
+  attractionValidation() {
+      this.attractionFormDetails = this.fb.group({
+        title: [null, Validators.required ],
+        placeName: [null, Validators.required ],
+        placeAddress: [null, Validators.required ],
+        shortDescription: [null, Validators.required ],
+        longDescription: [null, Validators.required ],
+        latitude: [null, Validators.required ],
+        longitude: [null, Validators.required ],
+        website: [null, Validators.required ],
+        contact: [null, Validators.required ],
+        email: [null, Validators.required ],
       }
-      this._userService.attractionDetails(this.attractionPlaceForm.value)
-      .subscribe(
-        res=>{
-          console.log(res);
-          this.router.navigate(['/attraction-details']);
-        },
-        (error)=>{
-          console.log(error);
-        }
-      );
-      // console.log(JSON.stringify(this.registerForm.value));
-   }
-
+    );
+  }
+  attractionPlace() {
+    if (!this.attractionFormDetails.valid) {
+      console.log('Invalid form');
+      return;
+    }
+    this.attractionService.attractionDetails(this.attractionFormDetails.value)
+      .subscribe((data) => {
+       console.log(data);
+       this.router.navigate(['/attraction-details']);
+      });
+    }
 }

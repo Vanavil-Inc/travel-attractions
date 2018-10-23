@@ -26,12 +26,12 @@
 
                           <div class="form-group input-group">
                               <label for="description">Description</label>
-                              <textarea type="text" name="description" [(ngModel)]="attractions.description" class="form-control border-rdius" required></textarea>
+                              <textarea type="text" name="description" [(ngModel)]="attractions.shortDescription" class="form-control border-rdius" required></textarea>
                           </div>
 
                           <div class="form-group input-group">
                               <label for="websiteLink">Web site</label>
-                              <input type="websiteLink" name="contact" [(ngModel)]="attractions.websiteLink" class="form-control border-rdius" required>
+                              <input type="websiteLink" name="contact" [(ngModel)]="attractions.website" class="form-control border-rdius" required>
                           </div>
                           <div class="form-group input-group">
                               <label for="contact">Contact</label>
@@ -42,7 +42,7 @@
                               <input type="text" name="email" [(ngModel)]="attractions.email" class="form-control border-rdius" required>
                           </div>         
                           <div class="form-group input-group btn-styles">
-                            <button type="button" class="btn btn-default cancel-btn" routerLink="/">CANCEL</button>
+                            <button type="button" class="btn btn-default cancel-btn" routerLink="/attraction-details">CANCEL</button>
                             <button type="submit" class="btn btn-success register-btn">Update</button>
                           </div>
                         </form>                                  

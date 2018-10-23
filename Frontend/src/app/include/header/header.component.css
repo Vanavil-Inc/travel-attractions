@@ -1,10 +1,20 @@
+.navbar, .mat-form-field{
+  font-weight: 700;
+  font-size: 18px;
+}
+header {
+  margin-bottom: 10px;
+}
+.header-logo{
+  padding-top: 0px;
+}
+.navbar-expand-lg{
+  height: 70px;
+}
 .header-logo img{
-  width: 220px;
+  width: 250px;
   float: left;
   height: 65px;
-}
-.header-menu,.header-login{
-  float: left;
 }
 .header-menu ul{
   display: flex;
@@ -22,21 +32,26 @@
 }
 .header-login{
   text-align: right;
-  margin-top: 18px;
+  margin-top: 8px;
 }
 .header-login a{
   font-size: 18px;
-  color: #9BADA9;
+  color: #fff;
   font-weight: bold;
   text-decoration: none;
 }
-.header-menu ul li a:hover, .header-login a:hover{
-  color: rgba(0, 123, 255, 0.25);
+
+.header-menu ul li a:hover{
+  color: rgba(0, 123, 255, 0.25) !important;
+}
+.navbar.navbar-dark .navbar-nav .nav-item .header-login:hover {
+  color: rgba(255, 255, 255, 0.75);
 }
 #navBarNav{
   display: block;
   float: left;
 }
-ul{
-  display: -webkit-box;
+.marging-right{
+  margin-right: 15px;
 }
+

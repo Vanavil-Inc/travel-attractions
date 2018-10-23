@@ -8,31 +8,29 @@ import { Router } from '@angular/router';
 })
 export class UserhomeComponent implements OnInit {
 
-  firstName:String='';
+  firstName: String = '';
 
-  constructor(private _user:UserService, private _router:Router) { 
+  constructor(private _user: UserService, private _router: Router) { }
 
-    this._user.user()
-    .subscribe(
-     data=>this.addName(data),
-     error=> this._router.navigate(['/login'])
-    )
-  }
-
-  addName(data){
-    this.firstName= data.firstName;
+  addName(data) {
+    this.firstName = data.firstName;
   }
 
   ngOnInit() {
+    this._user.user()
+      .subscribe((data) => {
+        this.addName(data),
+        error => this._router.navigate(['/login']);
+      });
   }
 
-  logout(){
+  logout() {
     this._user.logout()
     .subscribe(
-      data=>{ 
+      data => {
         console.log(data);
         this._router.navigate(['/login']);},
-        error=>console.error(error)
-    )
+        error => console.error(error)
+    );
   }
 }

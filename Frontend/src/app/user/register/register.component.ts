@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
     'email': [
       { type: 'required', message: 'Email is required' },
       { type: 'pattern', message: 'Enter a valid email' }
-    ], 
+    ],
     'mobile': [
       { type: 'required', message: 'Mobile is required' },
       { type: 'validCountryPhone', message: 'Phone incorrect for the country selected' }
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
     ],
     'country': [
       { type: 'required', message: 'Country is required' }
-    ],    
+    ],
     'cpassword': [
       { type: 'required', message: 'Confirm password is required' },
       { type: 'validate', message: 'Password mismatch' }
@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
     ]
   };
 
-  constructor(private fb: FormBuilder, private _userService : UserService, private router: Router) {
+  constructor(private fb: FormBuilder, private _userService: UserService, private router: Router) {
    }
 
    ngOnInit() {
@@ -108,15 +108,15 @@ export class RegisterComponent implements OnInit {
     // });
   }
 
-  onSubmitUserDetails(){
-    if(!this.userDetailsForm.valid){
+  onSubmitUserDetails() {
+    if ( !this.userDetailsForm.valid) {
       console.log('Invalid form');
       return;
     }
     this._userService.registerUser(JSON.stringify(this.userDetailsForm.value))
-    .subscribe(res =>{
+    .subscribe(res => {
       console.log(res);
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
     });
   }
 

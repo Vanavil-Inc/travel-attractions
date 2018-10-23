@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { CarouselModule, MDBBootstrapModule , WavesModule, ButtonsModule } from 'angular-bootstrap-md'
+import { StarRatingModule } from 'angular-star-rating';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction'
 
@@ -22,13 +23,16 @@ import { AttractionReviewComponent } from './include/attraction-review/attractio
 import { UserhomeComponent } from './include/userhome/userhome.component';
 import { UserService } from './services/user.service';
 import { AttractionService } from './services/attraction.service';
-import { CommentsComponent } from './include/comments/comments.component';
+import { CommentsComponent } from './attraction-place/comments/comments.component';
 import { AttractionplaceComponent } from './attraction-place/attractionplace/attractionplace.component';
 import { AttractionListPageComponent } from './attraction-place/attraction-list-page/attraction-list-page.component';
 import { AttractionDetailsComponent } from './attraction-place/attraction-details/attraction-details.component';
 import { TestComponent } from './test/test.component';
 import { AttractionEditComponent } from './attraction-place/attraction-edit/attraction-edit.component';
-import { AttractionComponent } from './attraction-place/attraction/attraction.component';
+import { CarouselComponent } from './include/carousel/carousel.component';
+import { AttractionsComponent } from './attraction-place/attractions/attractions.component';
+import {AuthService} from './services/auth.service';
+import { StarRatingComponent } from './attraction-place/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,6 @@ import { AttractionComponent } from './attraction-place/attraction/attraction.co
     HeaderComponent,
     AboutComponent,
     ContactUsComponent,
-    AttractionComponent,
     AboutMainPageComponent,
     AttractionReviewComponent,
     UserhomeComponent,
@@ -50,6 +53,9 @@ import { AttractionComponent } from './attraction-place/attraction/attraction.co
     AttractionDetailsComponent,
     TestComponent,
     AttractionEditComponent,
+    CarouselComponent,
+    AttractionsComponent,
+    StarRatingComponent
   ],
   imports: [
     BrowserModule,
@@ -59,16 +65,18 @@ import { AttractionComponent } from './attraction-place/attraction/attraction.co
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserModule,
-    HttpModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: ''}),
     AgmDirectionModule,
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule, MDBBootstrapModule , WavesModule, ButtonsModule,
+    StarRatingModule.forRoot()
   ],
   providers: [
-    UserService, AttractionService 
+    UserService, AttractionService, AuthService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }

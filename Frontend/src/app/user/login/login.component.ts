@@ -1,44 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl,FormBuilder} from '@angular/forms';
+import { FormGroup, Validators, FormControl, FormBuilder} from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
-
+import {AuthService} from '../../services/auth.service';
 
 @Component({
-  selector: 'app-login', 
+  selector: 'app-login',
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
 
-  private formSubmitAttempt: boolean;
-
-  loginForm : FormGroup = new FormGroup({
+  result: any;
+  loginForm: FormGroup = new FormGroup({
      email: new FormControl(null, [Validators.email, Validators.required]),
     password: new FormControl(null, Validators.required)
   });
 
-  constructor(private router: Router,private _user:UserService, private _formBuilder:FormBuilder) { }
+  constructor(private router: Router, private _user: UserService, private auth: AuthService) { }
 
   ngOnInit() {
   }
 
-  moveToRegister(){
+  moveToRegister() {
     this.router.navigate(['/register']);
   }
-  
-  loginUser(){
-    if(!this.loginForm.valid){
+
+  loginUser() {
+    if ( !this.loginForm.valid) {
       console.log('Invaliad');
       return;
     }
     this._user.login(JSON.stringify(this.loginForm.value))
-      .subscribe(
-        data=> {console.log(data);
-        
-        this.router.navigate(['/userhome']);},
-        error=> console.error(error)
-      ) 
-      // this.formSubmitAttempt = true; 
-    // console.log(JSON.stringify(this.loginForm.value));
-  } 
+      .subscribe(data => {
+          this.result = data;
+          if ( this.result.success) {
+            this.router.navigate(['/user']);
+          } else {
+             error=> console.error(error);
+          }
+        },
+      );
+  }
 }
+
